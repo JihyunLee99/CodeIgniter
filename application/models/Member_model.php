@@ -13,19 +13,56 @@ class Member_model extends CI_Model {
         
         자식 생성자 내에서 parent ::__construct(); 호출
         */
+        
+        
         parent ::__construct();
+        $this->test = $this->load->database('test',true);
+        $this->test01 = $this->load->database('test01',true);
         //생성자에 코드 기능 추가
+        //test와 test01 설정에 맞추어 데이터베이스 로드, test와 test01 변수에 저장      
     
     }
     
+/*    
     private $members = array(
         '1' => 'Edward',
         '2' => 'Alex',
         '3' => 'John'
     );
+*/
+ 
     
-    public function getMembers(){
-        return $this->members;    
+/* public function GetMembers()
+    {
+        //line35 database 로드 - databaseSetting 파일에서 active_group에 설정된 데베 정보연결
+        $this->load->database();
+        //database에서 쿼리를 보내고 그 결과를 객체로 변환해주는 코드
+        $result = $this->db->query('SELECT id, name FROM members')->result();
+        //자동으로 데베 연결을 끊어주나, 아래 코드는 수동을 끊기
+        $this->db->close();
+ 
+        return $result;
+    }
+    */
+    
+    public function GetMembersBytest(){
+        
+        //데이터베이스에 쿼리를 보내고 그 결과를 객체(object)로 반환 해주는 코드.
+        $result = $this->test->query('SELECT id, name FROM members')->result();
+        
+        $this->test->close();
+        
+        return $result;    
+    }
+    
+    
+    public function GetMembersBytest01(){
+        
+        $result = $this->test01->query('SELECT id, name FROM members')->result();
+        
+        $this->test01->close();
+    
+        return $result;
     }
 }
 

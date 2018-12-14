@@ -8,14 +8,16 @@
         <body>
             <table>
                 <thead>
-                    <th>ID</th>
-                    <th>Name</th>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                    </tr>
                 </thead>
                 <tbody>
-                    <?php foreach($members as $id => $name) :?>
+                    <?php foreach($members as $member) :?>
                     <tr>
-                    <td><?=$id?></td>    
-                    <td><?=$name?></td>
+                        <td><?=$member->id?></td>    
+                        <td><?=$member->name?></td>
                     </tr>
                 <?php endforeach ?>
                 </tbody>
